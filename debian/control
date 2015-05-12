@@ -1,0 +1,72 @@
+Source: libevdev
+Priority: optional
+Maintainer: Stephen Kitt <skitt@debian.org>
+Build-Depends:
+ check,
+ debhelper (>= 9),
+ dh-autoreconf,
+ doxygen,
+ pkg-config,
+ python
+Standards-Version: 3.9.5
+Section: libs
+Homepage: http://www.freedesktop.org/wiki/Software/libevdev/
+Vcs-Git: git://anonscm.debian.org/collab-maint/libevdev.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/libevdev.git;a=summary
+
+Package: libevdev-dev
+Section: libdevel
+Architecture: linux-any
+Depends:
+ libevdev2 (= ${binary:Version}),
+ libjs-jquery,
+ ${misc:Depends}
+Built-Using: doxygen (= ${doxygen:Version})
+Description: wrapper library for evdev devices - development files
+ libevdev is a wrapper library for evdev devices. It provides
+ functions covering the common tasks when dealing with evdev devices,
+ thus avoiding erroneous ioctls and other errors.
+ .
+ This package contains the files required to build software using
+ libevdev.
+
+Package: libevdev2
+Architecture: linux-any
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: wrapper library for evdev devices
+ libevdev is a wrapper library for evdev devices. It provides
+ functions covering the common tasks when dealing with evdev devices,
+ thus avoiding erroneous ioctls and other errors.
+ .
+ This package contains the files required to run software using
+ libevdev.
+
+Package: libevdev2-udeb
+Package-Type: udeb
+Architecture: linux-any
+Section: debian-installer
+Pre-Depends:
+ ${misc:Pre-Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: wrapper library for evdev devices - udeb
+ This package contains the files required to provide libevdev for the
+ Debian Installer. Do not install it on a normal system.
+
+Package: libevdev-tools
+Section: utils
+Architecture: linux-any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: wrapper library for evdev devices - tools
+ libevdev is a wrapper library for evdev devices. It provides
+ functions covering the common tasks when dealing with evdev devices,
+ thus avoiding erroneous ioctls and other errors.
+ .
+ This package contains touchpad-edge-detector.
